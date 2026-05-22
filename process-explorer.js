@@ -177,7 +177,7 @@ class ProcessExplorer extends LitElement {
       font-weight: 600;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: #3B5BDB;
+      color: #12204c;
       margin-bottom: 16px;
     }
 
@@ -229,7 +229,7 @@ class ProcessExplorer extends LitElement {
     }
 
     .search-input:focus {
-      border-color: #3B5BDB;
+      border-color: #12204c;
     }
 
     .search-input::placeholder { color: #94A3B8; }
@@ -256,12 +256,17 @@ class ProcessExplorer extends LitElement {
       white-space: nowrap;
     }
 
-    .tab-btn:hover { border-color: #3B5BDB; color: #3B5BDB; }
+    .tab-btn:hover:not(:disabled) { border-color: #12204c; color: #12204c; }
 
     .tab-btn.active {
       background: #0D1B2A;
       border-color: #0D1B2A;
       color: #fff;
+    }
+
+    .tab-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
     }
 
     /* Explorer layout */
@@ -320,7 +325,7 @@ class ProcessExplorer extends LitElement {
 
     .group-item.active {
       background: rgba(59,91,219,0.18);
-      border-left-color: #3B5BDB;
+      border-left-color: #12204c;
     }
 
     .group-item.disabled {
@@ -333,7 +338,7 @@ class ProcessExplorer extends LitElement {
       width: 7px;
       height: 7px;
       border-radius: 50%;
-      background: #3B5BDB;
+      background: #12204c;
       flex-shrink: 0;
       margin-top: 2px;
     }
@@ -465,7 +470,7 @@ class ProcessExplorer extends LitElement {
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: #3B5BDB;
+      color: #12204c;
       margin-bottom: 8px;
     }
 
@@ -537,7 +542,7 @@ class ProcessExplorer extends LitElement {
       align-items: center;
       gap: 8px;
       padding: 13px 24px;
-      background: #3B5BDB;
+      background: #12204c;
       color: #fff;
       border: none;
       border-radius: 8px;
@@ -557,7 +562,7 @@ class ProcessExplorer extends LitElement {
     }
 
     .cta-link a {
-      color: #3B5BDB;
+      color: #12204c;
       text-decoration: underline;
       cursor: pointer;
     }
@@ -624,7 +629,7 @@ class ProcessExplorer extends LitElement {
     return html`
       <div class="sidebar">
         <div class="sidebar-header">
-          <div class="sidebar-fn">9.0 Manage Financial Resources</div>
+          <div class="sidebar-fn">${DATA.function} ${DATA.name}</div>
         </div>
         <div class="group-list">
           ${allGroups.map(g => {
@@ -734,7 +739,8 @@ class ProcessExplorer extends LitElement {
           ${TABS.map(tab => html`
             <button
               class="tab-btn ${this.activeTab === tab.label ? 'active' : ''}"
-              @click=${() => { this.activeTab = tab.label; this.searchQuery = ''; }}
+              ?disabled=${tab.ids.length === 0}
+              @click=${() => { if (tab.ids.length > 0) { this.activeTab = tab.label; this.searchQuery = ''; } }}
             >${tab.label}</button>
           `)}
         </div>
