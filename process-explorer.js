@@ -710,6 +710,15 @@ class ProcessExplorer extends LitElement {
       flex: 1;
     }
 
+    .challenge-name .search-result-group {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #94A3B8;
+      margin-bottom: 3px;
+    }
+
     .challenge-toggle {
       width: 22px;
       height: 22px;
@@ -998,14 +1007,28 @@ class ProcessExplorer extends LitElement {
           <div class="panel-title">Search results</div>
           <div class="panel-subtitle">${results.length} challenge${results.length !== 1 ? 's' : ''} found</div>
         </div>
-        <div class="search-results">
-          ${results.map(({ group, challenge }) => html`
-            <div class="search-result-item">
-              <div class="search-result-group">${group.name}</div>
-              <div class="search-result-name" .innerHTML=${this.highlight(challenge.name)}></div>
-              <div class="search-result-text" .innerHTML=${this.highlight(challenge.painpoint.slice(0,160) + '…')}></div>
-            </div>
-          `)}
+        <div class="challenges-list">
+          ${results.map(({ group, challenge }) => {
+            const expanded = !!this.expandedIds[challenge.id];
+            return html`
+              <div class="challenge-card ${expanded ? 'expanded' : ''}">
+                <div class="challenge-header" @click=${() => this.toggleChallenge(challenge.id)}>
+                  <div class="challenge-name">
+                    <div class="search-result-group">${group.name}</div>
+                    <span .innerHTML=${this.highlight(challenge.name)}></span>
+                  </div>
+                  <div class="challenge-toggle">${expanded ? '−' : '+'}</div>
+                </div>
+                <div class="challenge-body">
+                  <div class="painpoint" .innerHTML=${this.highlight(challenge.painpoint)}></div>
+                  <div class="solution-box">
+                    <div class="solution-label">How Lowgile addresses this</div>
+                    <div class="solution-text" .innerHTML=${this.highlight(challenge.solution)}></div>
+                  </div>
+                </div>
+              </div>
+            `;
+          })}
         </div>
       </div>
     `;
