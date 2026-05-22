@@ -161,6 +161,7 @@ class ProcessExplorer extends LitElement {
   static styles = css`
     :host {
       display: block;
+      width: 100%;
       font-family: 'Figtree', sans-serif;
       color: #0D1B2A;
     }
@@ -168,7 +169,7 @@ class ProcessExplorer extends LitElement {
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     .section-wrapper {
-      padding: 72px 0 96px;
+      padding: 0 0 96px;
     }
 
     .eyebrow {
@@ -743,10 +744,6 @@ class ProcessExplorer extends LitElement {
           ${this.renderPanel()}
         </div>
 
-        <div class="footer-cta">
-          <button class="btn-primary">Discuss a specific challenge →</button>
-          <span class="cta-link">or <a>book a diagnostic call</a></span>
-        </div>
       </div>
     `;
   }
