@@ -503,19 +503,20 @@ class ProcessExplorer extends LitElement {
 
     .search-input {
       width: 100%;
-      padding: 12px 16px 12px 42px;
-      border: 1.5px solid #E2E8F0;
-      border-radius: 8px;
+      padding: 14px 18px 14px 44px;
+      border: 1.5px solid transparent;
+      border-radius: 100px;
       font-size: 14px;
       font-family: inherit;
-      background: #fff;
+      background: #F0F2F8;
       color: #0D1B2A;
       outline: none;
-      transition: border-color 0.2s;
+      transition: border-color 0.2s, background 0.2s;
     }
 
     .search-input:focus {
       border-color: #12204c;
+      background: #fff;
     }
 
     .search-input::placeholder { color: #94A3B8; }
@@ -1013,10 +1014,6 @@ class ProcessExplorer extends LitElement {
   render() {
     return html`
       <div class="section-wrapper">
-        <div class="eyebrow">Process Explorer</div>
-        <h2>Where are your biggest challenges?</h2>
-        <p class="subtitle">Select your function, then click a process group to see the specific challenges we address and how.</p>
-
         <div class="search-wrapper">
           <svg class="search-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8">
             <circle cx="8.5" cy="8.5" r="5.5"/><line x1="13" y1="13" x2="18" y2="18"/>
