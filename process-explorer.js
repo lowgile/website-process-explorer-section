@@ -161,17 +161,14 @@ class ProcessExplorer extends LitElement {
   static styles = css`
     :host {
       display: block;
-      font-family: 'DM Sans', 'Helvetica Neue', Arial, sans-serif;
-      background: #F5F4F0;
+      font-family: 'Figtree', sans-serif;
       color: #0D1B2A;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     .section-wrapper {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 72px 24px 96px;
+      padding: 72px 0 96px;
     }
 
     .eyebrow {
@@ -184,7 +181,7 @@ class ProcessExplorer extends LitElement {
     }
 
     h2 {
-      font-family: 'DM Serif Display', Georgia, serif;
+      font-family: 'Figtree', sans-serif;
       font-size: clamp(32px, 4vw, 52px);
       font-weight: 400;
       line-height: 1.1;
@@ -714,9 +711,6 @@ class ProcessExplorer extends LitElement {
 
   render() {
     return html`
-      <link rel="preconnect" href="https://fonts.googleapis.com">
-      <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
-
       <div class="section-wrapper">
         <div class="eyebrow">Process Explorer</div>
         <h2>Where are your biggest challenges?</h2>
